@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div id="body">
+    <h1><%= link_to @post.title, @post, :rel => "permalink" %></a></h1>
+    <div class="byline">
+        Posted by: <span><%= @post.author %></span>
+    </div>
+    <div id="entry">
+    <%= @post.content.html_safe %>
+    </div>
+</div>
+
+
+<%#
+<p>
+  <b>Tags:</b>
+  <%= @post.tags.map { |t| t.name }.join(", ") %>
+<%#
+</p>
+%>
+<div id="comments">
+    <h4>Comments</h4>
+    <%= render @post.comments %>
+
+
+    <h4>Post a comment:</h4>
+    <%= render "comments/form" %>
+</div>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
