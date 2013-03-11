@@ -1,10 +1,8 @@
-<%# <% @post.tags.build %>
-
 <%= form_for(@post) do |post_form| %>
 
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: Yahopo</h2>
+      <h2><%= pluralize(@post.errors.count, 'error') %> prohibited this post from being saved.</h2>
 
       <ul>
       <% @post.errors.full_messages.each do |msg| %>
@@ -15,8 +13,7 @@
   <% end %>
 
   <div class="field">
-    <%= post_form.label :title %><br />
-    <%= post_form.text_field :title %>
+    <%= post_form.label :title %> <%= post_form.text_field :title %>
   </div>
 
   <div class="field">
@@ -25,18 +22,10 @@
   </div>
 
   <div class="field">
-    <%= post_form.label :author %><br />
-    <%= post_form.text_field :author %>
+    <%= post_form.label :author %>: <%= post_form.text_field :author %>
   </div>
-
-  <%#
-  <h2>Tags</h2>
-  <%= render :partial => 'tags/form',
-             :locals  => {:form => post_form} %>
 
   <div class="actions">
     <%= post_form.submit %>
   </div>
-
-  <p><em>This is the form to edit Posts</em></p>
 <% end %>
