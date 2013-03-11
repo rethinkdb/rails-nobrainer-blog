@@ -1,17 +1,22 @@
 class PostsController < ApplicationController
-  # GET /posts
-  # GET /posts.json
+
+  # Responding to `GET` requests to `/posts` and `/posts.json`
+  # by retrieving `all` `Post`s.
+  #
+  # `Posts.all` translates to a [table](http://www.rethinkdb.com/api/#rb:selecting_data-table)
+  # query which returns a batched enumerable.
   def index
     @posts = Post.all
-    puts "Found: #{@posts.count}"
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
+  # Retrieves a single post by id using +Post.find+. This function
+  # translates to a [get](http://www.rethinkdb.com/api/#rb:selecting_data-get) query
+  # which retrieves a specific document by its id using the primary index.
   def show
     @post = Post.find(params[:id])
 
@@ -32,13 +37,17 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1/edit
+  # Edit a single +Post+ specified by +:id+ as results of +GET+ /posts/1/edit.
+  # The +Post.find+ results in a ReQL [get](http://www.rethinkdb.com/api/#rb:selecting_data-get) query.
   def edit
     @post = Post.find(params[:id])
   end
 
-  # POST /posts
-  # POST /posts.json
+  # Create a new +Post+ as result of a +POST+ request to /posts or /posts.json.
+  #
+  # The +@post.save+ results in a ReQL [insert](http://www.rethinkdb.com/api/#rb:writing_data-insert)
+  # operation. NoBrainer receives the result and extracts the new document +id+ and sets it
+  # on the +@post+ instance.
   def create
     @post = Post.new(params[:post])
 
@@ -47,7 +56,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -63,14 +72,20 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
+  # Deletes a +Post+ as result of a +DELETE+ request.
+  #
+  # In ReQL this involves the following chain
+  # of operations: [get](http://www.rethinkdb.com/api/#rb:selecting_data-get)
+  # followed by [delete]()http://www.rethinkdb.com/api/#rb:writing_data-delete).
+  #
+  # _Note_: the +get+ and +delete+ operations are both executed on the database
+  # and they do not require 2 round trips.
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
