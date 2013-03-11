@@ -20,11 +20,14 @@
 %>
 <div id="comments">
     <h4>Comments</h4>
-    <%= render @post.comments %>
+    <% @post.comments do |comment| %>
+      <%= render :partial => 'comments/comment', :locals => { :comment => comment }  %>
+    <% end %>
+
 
 
     <h4>Post a comment:</h4>
-    <%= render "comments/form" %>
+    <%= render 'comments/form' %>
 </div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
