@@ -2,7 +2,7 @@
 
 <div id="body">
     <h1><%= link_to @post.title, @post, :rel => "permalink" %></a></h1>
-    <div class="byline">
+    <div id="byline">
         Posted by: <span><%= @post.author %></span>
     </div>
     <div id="entry">
@@ -10,20 +10,11 @@
     </div>
 </div>
 
-
-<%#
-<p>
-  <b>Tags:</b>
-  <%= @post.tags.map { |t| t.name }.join(", ") %>
-<%#
-</p>
-%>
 <div id="comments">
     <h4>Comments</h4>
-    <% @post.comments do |comment| %>
+    <% @post.comments.each do |comment| %>
       <%= render :partial => 'comments/comment', :locals => { :comment => comment }  %>
     <% end %>
-
 
 
     <h4>Post a comment:</h4>

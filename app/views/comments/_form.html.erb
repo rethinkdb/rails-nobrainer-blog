@@ -1,20 +1,20 @@
-  <% if @comment %>
-    <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this post from being saved: Yahopo</h2>
+<% if @comment %>
+  <% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved</h2>
 
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
     <% end %>
+    </ul>
+  </div>
+  <% end %>
 <% end %>
 
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <div class="field">
-    <%= f.label :commenter %>: <%= f.text_field :commenter %>
+    <%= f.label :commenter, :class => 'author' %>: <%= f.text_field :commenter %>
   </div>
   <div class="field">
     <%= f.text_area :body %>
