@@ -37,14 +37,9 @@ and [comment.rb](https://github.com/rethinkdb/rails-nobrainer-blog/blob/master/a
 ## RethinkDB connection configuration ##
 
 Instructing NoBrainer to connect to a specific RethinkDB databases is done
-in the [rethinkdb_connection.rb](https://github.com/rethinkdb/rails-nobrainer-blog/blob/master/config/initializers/rethinkdb_connection.rb)
-initializer:
-
-```ruby
-require 'nobrainer'
-
-NoBrainer.connect ENV['RDB_URL'] || 'rethinkdb://localhost:28015/blog'
-```
+in the [nobrainer.rb](https://github.com/rethinkdb/rails-nobrainer-blog/blob/master/config/initializers/nobrainer.rb)
+initializer, or with the RDB_URL environment variable.
+The default connecton string is `rethinkdb://localhost/"#{rails_app_name}_#{Rails.env}"`.
 
 ## Accessing the data ##
 

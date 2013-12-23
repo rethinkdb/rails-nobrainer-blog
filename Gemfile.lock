@@ -65,10 +65,10 @@ GEM
     middleware (0.1.0)
     mime-types (1.21)
     multi_json (1.6.1)
-    nobrainer (0.5.2)
-      activemodel (~> 3.2.9)
+    nobrainer (0.7.2)
+      activemodel (>= 3.2.0, < 5)
       middleware (~> 0.1.0)
-      rethinkdb (~> 1.2.6)
+      rethinkdb (~> 1.11.0.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -95,10 +95,10 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
-    rethinkdb (1.2.6.1)
+    rethinkdb (1.11.0.1)
       json
-      ruby_protobuf
-    ruby_protobuf (0.4.11)
+      ruby-protocol-buffers
+    ruby-protocol-buffers (1.5.1)
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -131,9 +131,8 @@ DEPENDENCIES
   debugger
   dynamic_form
   jquery-rails
-  nobrainer (= 0.5.2)
+  nobrainer (= 0.7.2)
   rails (= 3.2.12)
-  rethinkdb (~> 1.2.6)
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)

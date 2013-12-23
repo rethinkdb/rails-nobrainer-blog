@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   # which retrieves a row by its id using the primary key index.
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(params[:comment])
+    @comment = Comment.create(params[:comment].merge(:post => @post))
 
     if @comment.errors.any?
       render 'posts/show'

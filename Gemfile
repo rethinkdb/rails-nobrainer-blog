@@ -6,8 +6,7 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'thin'
-gem 'rethinkdb', '~> 1.2.6'
-gem 'nobrainer', '0.5.2'
+gem 'nobrainer', '0.7.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
