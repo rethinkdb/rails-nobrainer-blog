@@ -12,7 +12,7 @@
   <% end %>
 <% end %>
 
-<%= form_for([@post, @post.comments.build]) do |f| %>
+<%= form_for([@post, Comment.new(:post => @post)]) do |f| %>
   <div class="field">
     <%= f.label :commenter, :class => 'author' %>: <%= f.text_field :commenter %>
   </div>
