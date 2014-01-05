@@ -6,7 +6,7 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'thin'
-gem 'nobrainer', '0.7.2'
+gem 'nobrainer', '~> 0.9.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,5 +35,5 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
 gem 'dynamic_form'
