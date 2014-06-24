@@ -40,18 +40,3 @@ and [comments_controller.rb](https://github.com/rethinkdb/rails-nobrainer-blog/b
 to see how using the model methods translates
 into RethinkDB's [ReQL queries](http://www.rethinkdb.com/api/#rb).
 
-## Try it on Heroku
-
-NoBrainer detects the RethinkDB Cloud environement on Heroku out of the box and
-connects to the proper database automatically.
-Follow the steps to deploy the blog example application on Heroku:
-
-```
-$ git clone https://github.com/rethinkdb/rails-nobrainer-blog.git
-$ cd rails-nobrainer-blog
-$ heroku create
-$ heroku addons:add rethinkdb-cloud
-$ git push heroku
-```
-
-Once done, you should be able to interact with your deployed application.
