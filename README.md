@@ -13,19 +13,15 @@ Using NoBrainer instead of ActiveRecord is very easy:
 ```ruby
 class Post
   include NoBrainer::Document
+  include NoBrainer::Document::Timestamps
 
   # Defines the fields of the document visible to the application
-  field :title
-  field :content
-  field :author
+  field :author,  :type => String, :required => true
+  field :title,   :type => String, :required => true
+  field :content, :type => Text,   :min_length => 5
 
-  # Define a one-to-many relationship between +Post+ and +Comment+
-  has_many :comments
-
-  # Rails validations
-  validates :author, :presence => true
-  validates :title, :presence => true,
-            :length => {:minimum => 5}
+  # Defines a one-to-many relationship between +Post+ and +Comment+
+  has_many :comments, :dependent => :destroy
 end
 ```
 
