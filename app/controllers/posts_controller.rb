@@ -49,10 +49,10 @@ class PostsController < ApplicationController
   # operation. NoBrainer receives the result and extracts the new document +id+ and sets it
   # on the +@post+ instance.
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
 
     respond_to do |format|
-      if @post.save
+      if @post.save?
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
@@ -68,7 +68,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if @post.update?(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
@@ -94,5 +94,11 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content, :author)
   end
 end
