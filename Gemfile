@@ -6,7 +6,7 @@ gem 'rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'thin'
-gem 'nobrainer', '~> 0.21.0'
+gem 'nobrainer', '~> 0.28.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
