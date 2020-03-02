@@ -100,7 +100,7 @@ GEM
       activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.2)
+    rake (13.0.1)
     rethinkdb (2.0.0.1)
       json
     sass (3.4.16)
